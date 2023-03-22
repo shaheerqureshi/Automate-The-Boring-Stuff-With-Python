@@ -58,3 +58,22 @@ print(mo1.group())
 nongreedyHaRegex = re.compile(r'(Ha){3,5}?')
 mo2 = nongreedyHaRegex.search('HaHaHaHaHa')
 print(mo2.group())
+
+#The findall() Method
+
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d') # has no groups
+searched = phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000  shaheer: 222-333-4444')
+print(searched)
+
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)') # has groups
+searched = phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
+print(searched)
+
+#Making Your Own Character Classes
+vowelRegex = re.compile(r'[aeiouAEIOU]')
+vowelClass = vowelRegex.findall('Robocop eats baby food. BABY FOOD.')
+print(vowelClass)
+
+namesRegex = re.compile(r'Agent \w+')
+cenName = namesRegex.sub('CENSORED', 'Agent Alice gave the secret documents to Agent Bob.')
+print(cenName)
